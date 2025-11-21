@@ -1,0 +1,217 @@
+1-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(n % 2 == 0);
+    }
+}
+2-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(n % 2 != 0);
+    }
+}
+3-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(Math.abs(n % 10));
+    }
+}
+4-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(Math.abs(n / 10 % 10));
+    }
+}
+5-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(Math.abs(a % 10) + Math.abs(b % 10));
+    }
+}
+6-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        System.out.println(m != 0 && n % m == 0);
+    }
+}
+7-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int c = 0;
+        for(int i = 0; i < 5; i++){
+            if(sc.nextInt() % 2 == 0) c++;
+        }
+        System.out.println(c);
+    }
+}
+8-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int c = 0;
+        for(int i = 0; i < 5; i++){
+            if(sc.nextInt() % 2 != 0) c++;
+        }
+        System.out.println(c);
+    }
+}
+9-
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int e = 0, o = 0;
+        for(int i = 0; i < 5; i++){
+            int x = sc.nextInt();
+            if(x % 2 == 0) e++;
+            else o++;
+        }
+        System.out.println(e + " " + o);
+    }
+}
+
+SECTION B
+
+10-
+static boolean isPrime(int n){
+    if(n <= 1) return false;
+    for(int i = 2; i * i <= n; i++)
+        if(n % i == 0) return false;
+    return true;
+}
+11-
+static long factorial(int n){
+    long f = 1;
+    for(int i = 2; i <= n; i++) f *= i;
+    return f;
+}
+12-
+static int nthFibo(int n){
+    if(n <= 1) return n;
+    int a = 0, b = 1;
+    for(int i = 2; i <= n; i++){
+        int t = a + b;
+        a = b;
+        b = t;
+    }
+    return b;
+}
+13-
+static int nthPrime(int n){
+    int count = 0, num = 1;
+    while(count < n){
+        num++;
+        if(isPrime(num)) count++;
+    }
+    return num;
+}
+14-
+static int primesInRange(int a, int b){
+    int c = 0;
+    for(int i = a; i <= b; i++)
+        if(isPrime(i)) c++;
+    return c;
+}
+15-
+static int countDigits(int n){
+    n = Math.abs(n);
+    if(n == 0) return 1;
+    int c = 0;
+    while(n > 0){
+        c++;
+        n /= 10;
+    }
+    return c;
+}
+16-
+static int countUniqueDigits(int n){
+    n = Math.abs(n);
+    boolean[] seen = new boolean[10];
+    while(n > 0){
+        seen[n % 10] = true;
+        n /= 10;
+    }
+    int c = 0;
+    for(boolean b : seen) if(b) c++;
+    return c;
+}
+17-
+static int countNonRepeatedDigits(int n){
+    n = Math.abs(n);
+    int[] f = new int[10];
+    int t = n;
+    while(t > 0){
+        f[t % 10]++;
+        t /= 10;
+    }
+    int c = 0;
+    for(int x : f) if(x == 1) c++;
+    return c;
+}
+18-
+static int digitSum(int n){
+    n = Math.abs(n);
+    int s = 0;
+    while(n > 0){
+        s += n % 10;
+        n /= 10;
+    }
+    return s;
+}
+19-
+static int digitSumEven(int n){
+    n = Math.abs(n);
+    int s = 0;
+    while(n > 0){
+        int d = n % 10;
+        if(d % 2 == 0) s += d;
+        n /= 10;
+    }
+    return s;
+}
+20-
+static int digitSumOdd(int n){
+    n = Math.abs(n);
+    int s = 0;
+    while(n > 0){
+        int d = n % 10;
+        if(d % 2 != 0) s += d;
+        n /= 10;
+    }
+    return s;
+}
+21-
+static int digitSumOpt(int n, String type){
+    n = Math.abs(n);
+    int s = 0;
+    while(n > 0){
+        int d = n % 10;
+        if(type.equalsIgnoreCase("even") && d % 2 == 0) s += d;
+        else if(type.equalsIgnoreCase("odd") && d % 2 != 0) s += d;
+        n /= 10;
+    }
+    return s;
+}
