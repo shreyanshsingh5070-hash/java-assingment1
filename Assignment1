@@ -215,3 +215,81 @@ static int digitSumOpt(int n, String type){
     }
     return s;
 }
+22-
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int temp = n;
+        int rev = 0;
+        while (temp > 0) {
+            rev = rev * 10 + temp % 10;
+            temp /= 10;
+        }
+        System.out.println(n == rev);
+    }
+}
+23-
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = Math.abs(sc.nextInt());
+        int[] freq = new int[10];
+
+        while(n > 0){
+            freq[n % 10]++;
+            n /= 10;
+        }
+
+        int oddCount = 0;
+        for(int f : freq){
+            if(f % 2 != 0) oddCount++;
+        }
+
+        System.out.println(oddCount <= 1);
+    }
+}
+24-
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+
+        int d1 = a % 10;
+        int d2 = b % 10;
+        int d3 = c % 10;
+
+        int smallest = Math.min(d1, Math.min(d2, d3));
+        int largest = Math.max(d1, Math.max(d2, d3));
+        int sum = d1 + d2 + d3;
+
+        int pin = smallest * 100 + largest * 10 + sum;
+
+        System.out.println(pin);
+    }
+}
+25-
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0;
+
+        for(int i = 1; i <= n; i++){
+            for(int j = 1; j <= i; j++){
+                sum += j;
+            }
+            for(int j = i - 1; j >= 1; j--){
+                sum += j;
+            }
+        }
+
+        System.out.println(sum);
+    }
+}
